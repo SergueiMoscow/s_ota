@@ -1,6 +1,7 @@
 version: '3'
 services:
   s_ota:
+    container_name: s_ota
     build:
       context: .
       dockerfile: Dockerfile

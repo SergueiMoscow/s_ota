@@ -1,8 +1,10 @@
 import datetime
 import os
 import glob
+from shutil import copy2
+
 from fastapi import HTTPException
-from aiofiles.os import rename as async_rename
+from aiofiles.os import remove as async_remove
 
 from ota import settings
 from ota.settings import FIRMWARE_DIR
@@ -46,6 +48,9 @@ async def get_updated_firmware_version(firmware_type: str):
         timestamp = os.path.getmtime(source_path)
         new_name = datetime.datetime.fromtimestamp(timestamp).strftime('%y%m%d%H%M')
         target_path = f"{settings.FIRMWARE_DIR}/{firmware_type}/{new_name}.bin"
-        await async_rename(source_path, target_path)
+        # await async_rename(source_path, target_path)
+        copy2(source_path, target_path)
+        await async_remove(source_path)
+
     except Exception as error:
         raise HTTPException(status_code=500, detail=str(error))

@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "ota"
+version = "0.1.0"
+description = ""
+authors = ["Сергей Сушков <sushkov_sv@ursip.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.110.2"
+uvicorn = "^0.29.0"
+pytest = "^8.1.1"
+faker = "^24.11.0"
+pytest-asyncio = "^0.23.6"
+environs = "^11.0.0"
+aiofiles = "^23.2.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

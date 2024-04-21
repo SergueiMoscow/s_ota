@@ -1,0 +1,11 @@
+version: '3'
+services:
+  s_ota:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+      - /sources/firmware:/firmware
+    ports:
+      - "8079:8079"

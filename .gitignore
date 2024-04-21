@@ -1,1 +1,4 @@
 *.bin
+.env
+.idea/
+.pytest_cache/

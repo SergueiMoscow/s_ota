@@ -6,6 +6,6 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./:/app
-      - /sources/firmware:/firmware
+      - /storages/firmware:/firmware
     ports:
       - "8079:8079"

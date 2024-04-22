@@ -1,6 +1,8 @@
 import datetime
 import os
 import glob
+import logging
+import time
 from shutil import copy2
 
 from fastapi import HTTPException
@@ -54,3 +56,10 @@ async def get_updated_firmware_version(firmware_type: str):
 
     except Exception as error:
         raise HTTPException(status_code=500, detail=str(error))
+
+
+async def write_list_to_log_file(caption: str, values: dict):
+    logging.basicConfig(level=logging.INFO, filename='requests.log', filemode='w')
+    logging.info(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()) + ' === ' + caption)
+    for key, value in values.items():
+        logging.info(f'{key}: {value}')

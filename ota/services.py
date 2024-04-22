@@ -48,7 +48,7 @@ async def get_updated_firmware_version(firmware_type: str):
     source_path = files[0]
     try:
         timestamp = os.path.getmtime(source_path)
-        new_name = datetime.datetime.fromtimestamp(timestamp).strftime('%y%m%d%H%M')
+        new_name = datetime.datetime.fromtimestamp(timestamp).strftime('%y%m%d_%H')
         target_path = f"{settings.FIRMWARE_DIR}/{firmware_type}/{new_name}.bin"
         # await async_rename(source_path, target_path)
         copy2(source_path, target_path)

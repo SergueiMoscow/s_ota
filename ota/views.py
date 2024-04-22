@@ -11,7 +11,7 @@ router = APIRouter()
 
 @router.get('/get_info/{device_type}')
 async def get_last_version_info(request: Request, device_type: str):
-    # await write_list_to_log_file('get_info headers', request.headers)
+    await write_list_to_log_file('get_info headers', request.headers)
     await get_updated_firmware_version(device_type)
     last_version_info = await get_last_firmware_info(device_type)
     return JSONResponse(last_version_info)
@@ -19,7 +19,7 @@ async def get_last_version_info(request: Request, device_type: str):
 
 @router.get('/get_bin/{device_type}')
 async def get_last_version_bin(request: Request, device_type: str):
-    # await write_list_to_log_file('get_bin headers', request.headers)
+    await write_list_to_log_file('get_bin headers', request.headers)
     if request.headers.get('user-agent') == 'ESP8266HTTPClient':
         await get_updated_firmware_version(device_type)
         firmware_dir = await get_firmware_path(device_type)
